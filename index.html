@@ -13,7 +13,7 @@
             const searchUrl = `https://www.googleapis.com/customsearch/v1?key=AIzaSyAVMUJqAukXO4jIZ7MMSB8wNEWIeYoqmIE&cx=06bfc8868125b40fd&q=${query}`;
             const response = await fetch(searchUrl);
             const data = await response.json();
-            return data.items.slice(0, 3);
+            return data.items.slice(0, 4); // Изменено на 4
         }
 
         async function extractTextFromUrl(url) {
@@ -39,7 +39,7 @@
                 const url = site.link;
                 const text = await extractTextFromUrl(url);
                 const resultDiv = document.createElement('div');
-                resultDiv.innerHTML = `<h3><a href="${url}" target="_blank">${site.title}</a></h3><p>${text}</p>`;
+                resultDiv.innerHTML = `<p>${text}</p>`; // Удалены ссылки и заголовки
                 resultsContainer.appendChild(resultDiv);
             }
         }
